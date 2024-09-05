@@ -2,7 +2,7 @@ import subprocess
 import sys
 import json
 
-indata = '(+([+!![]]+[!![]+!![]+!![]+!![]]))'
+indata = '(+([!![]+!![]+!![]]+[!![]+!![]+!![]+!![]+!![]]))'
 
 args = sys.argv
 DATA = {
@@ -62,10 +62,10 @@ print('dataを処理')
   
 jsf_data.pop(-1)
 result = "".join(jsf_data)
-result_list = {'args':args,'result':result}
+result_list = {'input':"".join(list),'result':result}
 result_js = f'console.log({result})'
 print('args: '+str(args)+',') 
 print('JSFuck: \n'+result)
-json_write('result.json', result_list)
+text_write('result.txt', result)
 text_write('test.js', text=result_js)
 node('test.js', data=None)
